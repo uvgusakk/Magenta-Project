@@ -1,6 +1,6 @@
 import pandas as pd
 from datetime import datetime
-cr = pd.read_excel("customer_rating.xlsx")
+cr = pd.read_excel("data/customer_rating.xlsx")
 
 
 cr["TIMESTAMP"] = pd.to_datetime(cr["TIMESTAMP"], unit="s")
@@ -15,7 +15,7 @@ cr[product_columns] = cr[product_columns].replace({"Yes": 1, "No": 0})
 cr["TOTAL_PRODUCTS"] = cr[product_columns].sum(axis=1)
 
 # Export the modified DataFrame to an Excel file
-output = "Customer_Data_with_Products.xlsx"
+output = "data/Customer_Data_with_Products.xlsx"
 cr.to_excel(output, index=False)
 
 print(f"Data exported to {output}")
